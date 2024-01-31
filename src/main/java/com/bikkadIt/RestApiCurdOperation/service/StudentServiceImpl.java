@@ -19,6 +19,11 @@ public class StudentServiceImpl implements StudentServiceI {
 
 	@Autowired
 	private StudentRepository stuRepository;
+	
+
+	public void setStuRepository(StudentRepository stuRepository) {
+		this.stuRepository = stuRepository;
+	}
 
 	@Autowired
 	private Student2repo sturepo;
@@ -27,14 +32,7 @@ public class StudentServiceImpl implements StudentServiceI {
 	@Override
 	 @Transactional(rollbackOn = Exception.class)
 	public boolean saveStudent(Student stu) {
-		Student save = null;
-		for (int i = 301; i <= 401; i++) {
-			stu.setStuId(i);
-			save = stuRepository.save(stu);
-			if (i == 350)
-				System.out.println(10 / 0);
-
-		}
+		Student save = stuRepository.save(stu);
 
 		if (save != null) {
 			return true;
